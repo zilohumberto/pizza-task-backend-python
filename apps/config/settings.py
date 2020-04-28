@@ -16,7 +16,7 @@ DATABASES = {
     }
 }
 SECRET_KEY = 'long_secret_password'
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv)
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 CUSTOM_APPS = (
     'commands',
     'ingredients',
@@ -67,16 +67,27 @@ WSGI_APPLICATION = 'config.wsgi.application'
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '[{levelname}][{asctime}][{module}] {message}',
+            'style': '{',
+        }
+    },
     'handlers': {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'filename': os.path.join(PROJECT_DIR, 'debug.log'),
         },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        }
     },
     'loggers': {
         'django': {
-            'handlers': ['file'],
+            'handlers': ['console',],
             'level': 'DEBUG',
             'propagate': True,
         },
