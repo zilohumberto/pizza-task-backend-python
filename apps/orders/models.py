@@ -12,3 +12,8 @@ class Order(models.Model):
     update_date = models.DateTimeField(auto_now=True)
     status = models.ForeignKey(OrderStatus, on_delete=models.CASCADE, null=False, blank=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, blank=False)
+
+    def save(self, *args, **kwargs):
+        if not self.status_id:
+            self.status_id = OrderStatus.objects.get(name='created').pk
+        super(Order, self).save(*args, **kwargs)

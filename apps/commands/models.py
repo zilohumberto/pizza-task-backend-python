@@ -11,7 +11,12 @@ class Command(models.Model):
     pizza_ordered = models.ForeignKey('pizzas.PricePizza', on_delete=models.CASCADE, null=False, blank=False)
     creation_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
-    status = models.ForeignKey(CommandStatus, on_delete=models.CASCADE, null=False, blank=False)
+    status = models.ForeignKey(CommandStatus, on_delete=models.CASCADE, null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.status_id:
+            self.status_id = CommandStatus.objects.get(name='created').pk
+        super(Command, self).save(*args, **kwargs)
 
 
 class IngredientByClient(models.Model):
