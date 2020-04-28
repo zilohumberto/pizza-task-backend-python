@@ -2,7 +2,7 @@ from django.db import models
 
 
 class CommandStatus(models.Model):
-    name = models.CharField(max_length=10, null=False, blank=False)
+    name = models.CharField(max_length=30, null=False, blank=False)
     description = models.CharField(max_length=100, null=False, blank=False)
 
 
