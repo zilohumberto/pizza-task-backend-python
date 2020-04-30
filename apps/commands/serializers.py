@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from commands.models import CommandStatus, Command, IngredientByClient
 from ingredients.serializers import IngredientSerializer
-from pizzas.serializers import PricePizzaSerializer
+from pizzas.serializers import PricePizzaRestSerializer
 
 
 class CommandStatusSerializer(serializers.ModelSerializer):
@@ -15,7 +15,7 @@ class IngredientByClientSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = IngredientByClient
-        fields = '__all__'
+        fields = ('id', 'ingredient_topping', 'amount', 'description')
 
 
 class IngredientByClientRestSerializer(serializers.ModelSerializer):
@@ -27,17 +27,30 @@ class IngredientByClientRestSerializer(serializers.ModelSerializer):
 
 
 class CommandSerializer(serializers.ModelSerializer):
+    toppings = IngredientByClientSerializer(many=True)
 
     class Meta:
         model = Command
-        fields = '__all__'
+        fields = ('id', 'pizza_ordered', 'order', 'creation_date', 'update_date', 'toppings', 'status',)
+
+    def create(self, validated_data):
+        """
+            Django does not support a relation insertion
+        """
+        ingredients_validated_data = validated_data.pop('toppings') if 'toppings' in validated_data else []
+        command = Command.objects.create(**validated_data)
+        ingredients_serializer = self.fields['toppings']
+        for each in ingredients_validated_data:
+            each['command'] = command
+        ingredients_serializer.create(ingredients_validated_data)
+        return command
 
 
 class CommandRestSerializer(serializers.ModelSerializer):
-    pizza_ordered = PricePizzaSerializer()
+    pizza_ordered = PricePizzaRestSerializer()
     status = CommandStatusSerializer()
-    ingredientbyclient_set = IngredientByClientSerializer(many=True)
+    toppings = IngredientByClientSerializer(many=True)
 
     class Meta:
         model = Command
-        fields = ('order', 'pizza_ordered', 'status', 'ingredientbyclient_set', 'creation_date', 'update_date',)
+        fields = ('order', 'pizza_ordered', 'status', 'toppings', 'creation_date', 'update_date',)

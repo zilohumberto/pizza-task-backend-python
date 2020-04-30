@@ -16,6 +16,14 @@ class PricePizzaSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class PizzaRestSerializer(serializers.ModelSerializer):
+    prices = PricePizzaSerializer(many=True)
+
+    class Meta:
+        model = Pizza
+        fields = ('id', 'name', 'description', 'photo', 'prices')
+
+
 class PricePizzaRestSerializer(serializers.ModelSerializer):
     pizza = PizzaSerializer(read_only=True)
     size = SizeSerializer(read_only=True)

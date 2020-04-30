@@ -20,7 +20,7 @@ class Command(models.Model):
 
 
 class IngredientByClient(models.Model):
-    command = models.ForeignKey(Command, on_delete=models.CASCADE, null=False, blank=False)
+    command = models.ForeignKey(Command, on_delete=models.CASCADE, null=False, blank=False, related_name="toppings")
     ingredient_topping = models.ForeignKey('ingredients.Ingredient', on_delete=models.CASCADE, null=False, blank=False)
     amount = models.FloatField(default=1)
     description = models.CharField(max_length=300, default="")

@@ -9,7 +9,7 @@ class Pizza(models.Model):
 
 
 class PricePizza(models.Model):
-    pizza = models.ForeignKey(Pizza, null=False, blank=False, on_delete=models.CASCADE)
+    pizza = models.ForeignKey(Pizza, null=False, blank=False, on_delete=models.CASCADE, related_name="prices")
     size = models.ForeignKey('sizes.Size', null=False, blank=False, on_delete=models.CASCADE)
     price = models.FloatField(null=False, blank=False)
     is_active = models.BooleanField(default=True)
