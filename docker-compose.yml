@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+
+  db:
+    image: mysql:5.6
+    restart: always
+    container_name: mysql_pizza_task
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+
+  app:
+    image: pizza-task
+    build: .
+    container_name: pizza-task-container
+    command: /bin/bash -c "cd /app/apps/ && python3 manage.py runserver"
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    expose:
+      - "8000"
+    depends_on:
+      - db
