@@ -15,7 +15,7 @@ class CommandStatusView(ModelViewSet):
     serializer_class = CommandStatusSerializer
     queryset = CommandStatus.objects.all()
     # permission_classes = (IsAuthenticated,)
-    http_method_names = ('get', 'patch', 'post',)
+    http_method_names = ('get', 'patch', 'post', 'options', )
 
 
 class CommandView(ModelViewSetNSerializer):
@@ -23,7 +23,7 @@ class CommandView(ModelViewSetNSerializer):
     rest_serializer_class = CommandRestSerializer
     queryset = Command.objects.all()
     # permission_classes = (IsAuthenticated,)
-    http_method_names = ('get', 'patch', 'post',)
+    http_method_names = ('get', 'patch', 'post', 'options', )
 
 
 class IngredientByClientView(ModelViewSetNSerializer):
@@ -31,4 +31,4 @@ class IngredientByClientView(ModelViewSetNSerializer):
     rest_serializer_class = IngredientByClientRestSerializer
     queryset = IngredientByClient.objects.all()
     # permission_classes = (IsAuthenticated,)
-    http_method_names = ('get', 'patch', 'post', 'delete',)
+    http_method_names = ('get', 'patch', 'post', 'delete', 'options', )

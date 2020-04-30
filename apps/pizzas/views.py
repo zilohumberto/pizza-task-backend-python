@@ -17,4 +17,4 @@ class PricePizzaView(ModelViewSetNSerializer):
     rest_serializer_class = PricePizzaRestSerializer
     queryset = PricePizza.objects.all()
     # permission_classes = (IsAuthenticated,)
-    http_method_names = ('get', 'patch', 'post',)
+    http_method_names = ('get', 'patch', 'post', 'options', )

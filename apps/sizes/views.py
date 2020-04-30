@@ -8,4 +8,4 @@ class SizeView(ModelViewSet):
     serializer_class = SizeSerializer
     queryset = Size.objects.all()
     # permission_classes = (IsAuthenticated,)
-    http_method_names = ('get', 'patch', 'post', 'delete', )
+    http_method_names = ('get', 'patch', 'post', 'delete', 'options', )

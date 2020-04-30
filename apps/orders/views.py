@@ -9,7 +9,7 @@ class OrderStatusView(ModelViewSet):
     serializer_class = OrderStatusSerializer
     queryset = OrderStatus.objects.all()
     # permission_classes = (IsAuthenticated,)
-    http_method_names = ('get', 'patch', 'post',)
+    http_method_names = ('get', 'patch', 'post', 'options',)
 
 
 class OrderView(ModelViewSetNSerializer):
@@ -17,4 +17,4 @@ class OrderView(ModelViewSetNSerializer):
     rest_serializer_class = OrderRestSerializer
     queryset = Order.objects.all()
     # permission_classes = (IsAuthenticated,)
-    http_method_names = ('get', 'patch', 'post',)
+    http_method_names = ('get', 'patch', 'post', 'options', )
