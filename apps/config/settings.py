@@ -23,7 +23,7 @@ DATABASES = {
 }
 SECRET_KEY = 'long_secret_password'
 ALLOWED_HOSTS = ["*"]
-CORS_ORIGIN_WHITELIST = config('CORS_ORIGIN_WHITELIST', cast=Csv(), default="")
+CORS_ORIGIN_WHITELIST = ["http://localhost:3000", "http://127.0.0.1:3000"]
 CUSTOM_APPS = (
     'commands',
     'ingredients',
@@ -93,12 +93,12 @@ LOGGING = {
     },
     'handlers': {
         'file': {
-            'level': 'DEBUG',
+            'level': 'INFO',
             'class': 'logging.FileHandler',
             'filename': os.path.join(PROJECT_DIR, 'debug.log'),
         },
         'console': {
-            'level': 'DEBUG',
+            'level': 'INFO',
             'class': 'logging.StreamHandler',
             'formatter': 'verbose',
         }

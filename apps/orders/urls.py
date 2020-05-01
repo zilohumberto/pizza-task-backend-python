@@ -7,6 +7,7 @@ router = routers.SimpleRouter()
 router.register(r'order', OrderView, basename="order")
 router.register(r'status', OrderStatusView)
 urlpatterns = [
+	url(r'^bill', OrderView.bill)
 ]
 
 urlpatterns += router.urls
