@@ -6,7 +6,7 @@ class Pizza(models.Model):
     name = models.CharField(max_length=300, null=False, blank=False)
     description = models.CharField(max_length=300, null=False, blank=False)
     photo = models.ImageField(
-        verbose_name="photo", width_field=500, height_field=500, null=True, blank=True,
+        verbose_name="photo", null=True, blank=True,
         storage=PizzaModelStorage(),
         upload_to=PizzaModelStorage.pizza_photo_path,
     )

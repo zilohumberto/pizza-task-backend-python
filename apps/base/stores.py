@@ -8,6 +8,6 @@ class PizzaModelStorage(S3Boto3Storage):
 
     @staticmethod
     def pizza_photo_path(instance, filename=None):
-        return "{pk}/last_thumbnail.jpg".format(
+        return "{pk}/pizza_photo.jpg".format(
             pk=instance.pk,
         )

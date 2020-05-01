@@ -14,6 +14,8 @@ s3_client = boto3.client(
     aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
 )
 
+import pdb; pdb.set_trace()
+
 
 def upload_file(bucket_name, file_path, key_name):
     data = open(file_path, 'rb')

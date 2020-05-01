@@ -7,9 +7,10 @@ DEBUG = config('DEBUG', cast=bool, default=False)
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = config("AWS_SECRET_ACCESS_KEY")
-AWS_REGION = config("AWS_REGION", default="us-east-1")
+AWS_S3_REGION_NAME = config("AWS_S3_REGION_NAME", default="us-east-1")
 AWS_S3_ENDPOINT_URL = config("AWS_S3_ENDPOINT_URL", default=None)
 PIZZA_MODEL_BUCKET = config("PIZZA_MODEL_BUCKET")
+AWS_DEFAULT_ACL = None
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
