@@ -16,7 +16,7 @@ DATABASES = {
     }
 }
 SECRET_KEY = 'long_secret_password'
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+ALLOWED_HOSTS = ["*"]
 CORS_ORIGIN_WHITELIST = config('CORS_ORIGIN_WHITELIST', cast=Csv(), default="")
 CUSTOM_APPS = (
     'commands',
