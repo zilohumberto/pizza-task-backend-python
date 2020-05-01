@@ -15,7 +15,7 @@ class OrderSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
-        fields = '__all__'
+        fields = ('user', 'id', 'status', 'creation_date', 'update_date', )
 
 
 class OrderRestSerializer(serializers.ModelSerializer):
@@ -25,4 +25,4 @@ class OrderRestSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Order
-        fields = ('user', 'command_set', 'status', 'creation_date', 'update_date', )
+        fields = ('id', 'user', 'command_set', 'status', 'creation_date', 'update_date', )

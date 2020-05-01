@@ -9,3 +9,14 @@ class ModelViewSetNSerializer(ModelViewSet):
         if self.action == 'list' or self.action == 'retrieve':
             return self.rest_serializer_class
         return self.serializer_class
+
+    def get_queryset(self):
+        model = self.serializer_class.Meta.model
+        if model._meta.pk.name in self.request.GET:
+            pk = model._meta.pk.name
+            queryset = model.objects.filter(
+                **{pk: self.request.GET[pk]}
+            )
+        else:
+            queryset = model.objects.all()
+        return queryset

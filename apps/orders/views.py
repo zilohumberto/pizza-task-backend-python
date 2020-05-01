@@ -15,6 +15,6 @@ class OrderStatusView(ModelViewSet):
 class OrderView(ModelViewSetNSerializer):
     serializer_class = OrderSerializer
     rest_serializer_class = OrderRestSerializer
-    queryset = Order.objects.all()
+    queryset = None
     # permission_classes = (IsAuthenticated,)
     http_method_names = ('get', 'patch', 'post', 'options', )

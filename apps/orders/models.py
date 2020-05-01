@@ -10,7 +10,7 @@ class OrderStatus(models.Model):
 class Order(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
-    status = models.ForeignKey(OrderStatus, on_delete=models.CASCADE, null=False, blank=False)
+    status = models.ForeignKey(OrderStatus, on_delete=models.CASCADE, null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
     def save(self, *args, **kwargs):
