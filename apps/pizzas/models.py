@@ -1,11 +1,15 @@
 from django.db import models
+from base.stores import PizzaModelStorage
 
 
 class Pizza(models.Model):
     name = models.CharField(max_length=300, null=False, blank=False)
     description = models.CharField(max_length=300, null=False, blank=False)
-    # TODO implement S3
-    photo = models.ImageField(verbose_name="photo", width_field=500, height_field=500, null=True, blank=True)
+    photo = models.ImageField(
+        verbose_name="photo", width_field=500, height_field=500, null=True, blank=True,
+        storage=PizzaModelStorage(),
+        upload_to=PizzaModelStorage.pizza_photo_path,
+    )
 
 
 class PricePizza(models.Model):
