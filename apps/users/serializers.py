@@ -14,7 +14,7 @@ class DeliveryAddressSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserRestSerializer(serializers.ModelSerializer):
     contact = serializers.SerializerMethodField('get_contacts')
     delivery_address = serializers.SerializerMethodField('get_delivery_address')
 
@@ -32,4 +32,17 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'contact', 'delivery_address', 'is_active',)
+        fields = ('id', 'first_name', 'last_name', 'contact', 'delivery_address', 'is_active',)
+
+
+class UserSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(
+        write_only=True,
+        required=True,
+        help_text='Leave empty if no change needed',
+        style={'input_type': 'password', 'placeholder': 'Password'}
+    )
+
+    class Meta:
+        model = User
+        fields = ('id', 'first_name', 'last_name', 'username', 'is_active', 'password')

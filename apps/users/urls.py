@@ -6,7 +6,7 @@ router = routers.SimpleRouter()
 
 router.register(r'contact/?', ContactView)
 router.register(r'delivery_address/?', DeliveryAddressView)
-router.register(r'detail/?', UserView)
+router.register(r'user/?', UserView, basename="user")
 urlpatterns = [
 ]
 
