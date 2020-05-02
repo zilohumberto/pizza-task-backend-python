@@ -30,11 +30,12 @@ class UserView(ModelViewSetNSerializer):
     http_method_names = ('get', 'patch', 'post', 'options', )
 
     def get_queryset(self):
+        if not self.request.user.is_authenticated:
+            return []
         if self.request.user.is_superuser:
             return User.objects.all()
         return [self.request.user]
 
-    @permission_classes([IsAuthenticated, ])
     def partial_update(self, request, *args, **kwargs):
         if request.user.pk != int(kwargs['pk'].encode('utf-8')):
             return JsonResponse('PRECONDITION_FAILED', status=status.HTTP_412_PRECONDITION_FAILED, safe=False)
@@ -59,15 +60,3 @@ class UserView(ModelViewSetNSerializer):
         except Exception as e:
             transaction.set_rollback(True)
             return HttpResponse(str(e), status=status.HTTP_404_NOT_FOUND)
-
-    @permission_classes([IsAuthenticated, ])
-    def update(self, request, *args, **kwargs):
-        return super(UserView, self).update(request, *args, **kwargs)
-
-    @permission_classes([IsAuthenticated, ])
-    def destroy(self, request, *args, **kwargs):
-        return super(UserView, self).destroy(request, *args, **kwargs)
-
-    @permission_classes([IsAuthenticated, ])
-    def list(self, request, *args, **kwargs):
-        return super(UserView, self).list(request, *args, **kwargs)

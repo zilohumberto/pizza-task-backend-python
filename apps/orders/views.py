@@ -36,6 +36,7 @@ class OrderView(ModelViewSetNSerializer):
                     'name': topping.ingredient_topping.name,
                     'total': topping.amount,
                     'units': 1,
+                    'status': ""
                 })
                 total += topping.amount
 
@@ -46,6 +47,7 @@ class OrderView(ModelViewSetNSerializer):
                     'units': 1,
                     'total': command.pizza_ordered.price,
                     'size': command.pizza_ordered.size.name,
+                    'status': command.status.description,
                 }
 
             )
