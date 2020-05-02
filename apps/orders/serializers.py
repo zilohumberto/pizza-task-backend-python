@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from orders.models import OrderStatus, Order
-from users.serializers import UserSerializer, ContactSerializer, DeliveryAddress
+from users.serializers import UserSerializer, ContactSerializer, DeliveryAddressSerializer
 from commands.serializers import CommandRestSerializer
 
 
@@ -23,7 +23,7 @@ class OrderRestSerializer(serializers.ModelSerializer):
     command_set = CommandRestSerializer(many=True)
     status = OrderStatusSerializer()
     contact = ContactSerializer()
-    address = DeliveryAddress()
+    address = DeliveryAddressSerializer()
 
     class Meta:
         model = Order
