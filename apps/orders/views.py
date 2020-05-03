@@ -18,25 +18,25 @@ class OrderView(ModelViewSetNSerializer):
     serializer_class = OrderSerializer
     rest_serializer_class = OrderRestSerializer
     queryset = None
-    permission_classes = (IsAuthenticated,)
     http_method_names = ('get', 'patch', 'post', 'options', )
 
     def get_queryset(self):
-        return self._get_queryset(self.request.user, self.request.GET)
+        return self._get_queryset(self.request.user, self.request.GET, self.request.data)
 
     @classmethod
-    def _get_queryset(cls, user, data):
+    def _get_queryset(cls, user, _get=dict(), data=dict()):
         model = cls.serializer_class.Meta.model
-        if user.is_superuser:
-            queryset = model.objects.all()
-        elif model._meta.pk.name in data:
-            pk = model._meta.pk.name
-            queryset = model.objects.filter(
-                **{pk: data[pk]}
-            )
+        pk = model._meta.pk.name
+        if model._meta.pk.name in data:
+            data_query = {pk: data[pk]}
+        elif model._meta.pk.name in _get:
+            data_query = {pk: _get[pk]}
+        elif user.is_superuser:
+            data_query = {}
         else:
-            queryset = model.objects.filter(user=user)
-        return queryset
+            data_query = dict(user=user)
+        
+        return model.objects.filter(**data_query)
 
     @staticmethod
     @api_view(['POST'])

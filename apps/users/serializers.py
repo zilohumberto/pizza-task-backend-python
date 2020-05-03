@@ -32,7 +32,7 @@ class UserRestSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'first_name', 'last_name', 'contact', 'delivery_address', 'is_active',)
+        fields = ('id', 'first_name', 'last_name', 'contact', 'delivery_address', 'is_active', 'is_superuser', )
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -45,4 +45,4 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'first_name', 'last_name', 'username', 'is_active', 'password')
+        fields = ('id', 'first_name', 'last_name', 'username', 'is_active', 'password', 'is_superuser', )
