@@ -42,9 +42,10 @@ class UserView(ModelViewSetNSerializer):
     @transaction.atomic()
     def create(self, request, *args, **kwargs):
         try:
+            import pdb; pdb.set_trace()
             data = request.data
             serializer = self.serializer_class(data=data)
-            serializer.is_valid(raise_exception=True)
+            serializer.is_valid(raise_exception=False)
             precondition = User.objects.filter(username=data['username'])
             if precondition:
                 return JsonResponse({"data": 'pre condition failed'}, status=status.HTTP_412_PRECONDITION_FAILED)
