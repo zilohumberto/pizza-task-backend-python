@@ -81,5 +81,9 @@ class OrderView(ModelViewSetNSerializer):
         kwargs['partial'] = True
         response = self.update(request, *args, **kwargs)
         if response.status_code == 200:
-            CommandController.set_cooking(order=response.data['id'])
+            data = response.data
+            if data['status'] == 2:
+                CommandController.set_cooking(order=response.data['id'])
+            if data['status'] == 3:
+                CommandController.set_cooked(order=response.data['id'])
         return response

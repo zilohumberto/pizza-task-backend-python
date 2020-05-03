@@ -42,7 +42,6 @@ class UserView(ModelViewSetNSerializer):
     @transaction.atomic()
     def create(self, request, *args, **kwargs):
         try:
-            import pdb; pdb.set_trace()
             data = request.data
             serializer = self.serializer_class(data=data)
             serializer.is_valid(raise_exception=False)
