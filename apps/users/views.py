@@ -32,8 +32,6 @@ class UserView(ModelViewSetNSerializer):
     def get_queryset(self):
         if not self.request.user.is_authenticated:
             return []
-        if self.request.user.is_superuser:
-            return User.objects.all()
         return [self.request.user]
 
     def partial_update(self, request, *args, **kwargs):
