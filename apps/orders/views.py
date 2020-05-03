@@ -5,6 +5,7 @@ from orders.models import OrderStatus, Order
 from orders.serializers import OrderStatusSerializer, OrderSerializer, OrderRestSerializer
 from rest_framework.decorators import api_view
 from django.http import JsonResponse
+from commands.controllers import CommandController
 
 
 class OrderStatusView(ModelViewSet):
@@ -27,14 +28,15 @@ class OrderView(ModelViewSetNSerializer):
     def _get_queryset(cls, user, _get=dict(), data=dict()):
         model = cls.serializer_class.Meta.model
         pk = model._meta.pk.name
+        filter_query = lambda x: {pk: x[pk]}
         if model._meta.pk.name in data:
-            data_query = {pk: data[pk]}
+            data_query = filter_query(data)
         elif model._meta.pk.name in _get:
-            data_query = {pk: _get[pk]}
+            data_query = filter_query(_get)
         elif user.is_superuser:
             data_query = {}
         else:
-            data_query = dict(user=user)
+            data_query = {'user': user, 'status_id__gt': 1}
         
         return model.objects.filter(**data_query)
 
@@ -74,3 +76,10 @@ class OrderView(ModelViewSetNSerializer):
                 result_bill['total'] += command.pizza_ordered.price+total
 
         return JsonResponse(result_bill, status=200, safe=False)
+
+    def partial_update(self, request, *args, **kwargs):
+        kwargs['partial'] = True
+        response = self.update(request, *args, **kwargs)
+        if response.status_code == 200:
+            CommandController.set_cooking(order=response.data['id'])
+        return response
