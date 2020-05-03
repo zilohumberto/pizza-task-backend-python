@@ -11,6 +11,7 @@ AWS_S3_REGION_NAME = config("AWS_S3_REGION_NAME", default="us-east-1")
 AWS_S3_ENDPOINT_URL = config("AWS_S3_ENDPOINT_URL", default=None)
 PIZZA_MODEL_BUCKET = config("PIZZA_MODEL_BUCKET")
 AWS_DEFAULT_ACL = None
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -18,7 +19,12 @@ DATABASES = {
         'USER': config('DB_USER', default='pizzatask'),
         'PASSWORD': config('DB_PASSWORD', default='great_password'),
         'HOST': config('DB_HOST', default='localhost'),
-        'PORT': int(config('DB_PORT', default='5432'))
+        'PORT': int(config('DB_PORT', default='5432')),
+        'CONN_MAX_AGE': 300,
+        'TEST': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3')
+        }
     }
 }
 SECRET_KEY = 'long_secret_password'
@@ -128,5 +134,4 @@ REST_FRAMEWORK = {
     ],
 }
 if DEBUG:
-    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     STATICFILES_DIRS = (os.path.join(BASE_DIR, 'app', 'statics'),)
