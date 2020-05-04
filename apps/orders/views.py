@@ -52,7 +52,6 @@ class OrderView(ModelViewSetNSerializer):
                 toppings = []
                 total = 0.0
                 for topping in command.toppings.all():
-                    import pdb; pdb.set_trace()
                     toppings.append({
                         'is_pizza': False,
                         'name': topping.ingredient_topping.name,
