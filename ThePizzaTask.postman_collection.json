@@ -1,0 +1,1428 @@
+{
+	"info": {
+		"_postman_id": "3c07058f-b51a-4a7b-bdfb-eb06b34577af",
+		"name": "ThePizzaTask",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pizza",
+			"item": [
+				{
+					"name": "Margarita",
+					"item": [
+						{
+							"name": "Pizza Margarita",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "758cb507-1951-4c22-a56e-824d78596497",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"var jsonData = pm.response.json();",
+											"pm.environment.set(\"pizza_id\", jsonData.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Margarita",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Margarita. The most ordinary pizzas, called coll'aglio e l'olio (with garlic and oil), are dressed with oil, and over there it's spread, as well as salt, the origanum and garlic cloves shredded minutely. Others are covered",
+											"type": "text"
+										},
+										{
+											"key": "photo",
+											"type": "file",
+											"src": "/home/humberto/Documentos/pizzas.png"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/pizzas/pizza/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"pizzas",
+										"pizza",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Size Small",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"pizza\": {{pizza_id}},\n\t\"size\": 3,\n\t\"price\": 10.9\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/pizzas/price_pizza/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"pizzas",
+										"price_pizza",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Size Med",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"pizza\": {{pizza_id}},\n\t\"size\": 2,\n\t\"price\": 15.5\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/pizzas/price_pizza/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"pizzas",
+										"price_pizza",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Size Family",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"pizza\": {{pizza_id}},\n\t\"size\": 3,\n\t\"price\": 29.90\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/pizzas/price_pizza/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"pizzas",
+										"price_pizza",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Neapolitan",
+					"item": [
+						{
+							"name": "Neapolitan",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fda2a03c-baf0-413d-b91c-0c6896323c6b",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"var jsonData = pm.response.json();",
+											"pm.environment.set(\"pizza_id\", jsonData.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Neapolitan",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Is the original pizza. This delicious pie dates all the way back to 18th century in Naples, Italy. During this time, the poorer citizens of this seaside city frequently purchased food that was cheap and could be eaten quickly. Luckily for them, Neapolitan pizza was affordable and readily...\n",
+											"type": "text"
+										},
+										{
+											"key": "photo",
+											"type": "file",
+											"src": "/home/humberto/Documentos/napolitana.jpeg"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/pizzas/pizza/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"pizzas",
+										"pizza",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Chicago",
+					"item": [
+						{
+							"name": "Chicago",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "fb81dcf9-484f-4f03-ac4e-d4ffdb176488",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"var jsonData = pm.response.json();",
+											"pm.environment.set(\"pizza_id\", jsonData.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Chicago",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Chicago pizza, also commonly referred to as deep-dish pizza, gets its name from the city it was invented in. During the early 1900’s, Italian immigrants in the windy city were searching for something similar to the Neapolitan pizza that they knew and loved.",
+											"type": "text"
+										},
+										{
+											"key": "photo",
+											"type": "file",
+											"src": "/home/humberto/Documentos/chicago.jpeg"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/pizzas/pizza/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"pizzas",
+										"pizza",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "New York-Style",
+					"item": [
+						{
+							"name": "New York-Style",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1ffbf1ca-4f79-46c0-90d5-164ed96b8737",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"var jsonData = pm.response.json();",
+											"pm.environment.set(\"pizza_id\", jsonData.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "New York-Style",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "With its characteristic large, foldable slices and crispy outer crust, New York-style pizza is one of America’s most famous regional pizza types. Originally a variation of Neapolitan-style pizza, the New York slice has taken on a fame all its own, with some saying its unique...",
+											"type": "text"
+										},
+										{
+											"key": "photo",
+											"type": "file",
+											"src": "/home/humberto/Documentos/newyork.jpg"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/pizzas/pizza/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"pizzas",
+										"pizza",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Sicilian",
+					"item": [
+						{
+							"name": "Sicilian",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7b349812-5d70-4076-a5b7-2cfa7464089c",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"var jsonData = pm.response.json();",
+											"pm.environment.set(\"pizza_id\", jsonData.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Sicilian",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Sicilian pizza, also known as sfincione, provides a thick cut of pizza with pillowy dough, a crunchy crust, and robust tomato sauce. This square-cut pizza is served with or without cheese, and often with the cheese underneath the sauce to prevent the pie from becoming soggy",
+											"type": "text"
+										},
+										{
+											"key": "photo",
+											"type": "file",
+											"src": "/home/humberto/Documentos/sicilian.jpeg"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/pizzas/pizza/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"pizzas",
+										"pizza",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Greek",
+					"item": [
+						{
+							"name": "Greek",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8105a847-d02f-4927-b2e1-6f661a4f038b",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"var jsonData = pm.response.json();",
+											"pm.environment.set(\"pizza_id\", jsonData.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Greek",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Greek pizza was created by Greek immigrants who came to America and were introduced to Italian pizza. Greek-style pizza, especially popular in the New England states, features a thick and chewy crust cooked in shallow, oiled pans, resulting in a nearly deep-fried bottom",
+											"type": "text"
+										},
+										{
+											"key": "photo",
+											"type": "file",
+											"src": "/home/humberto/Documentos/greek.jpeg"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/pizzas/pizza/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"pizzas",
+										"pizza",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "California",
+					"item": [
+						{
+							"name": "Pizza Margarita",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5274d262-f052-4921-ad8b-69e3e072390a",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"var jsonData = pm.response.json();",
+											"pm.environment.set(\"pizza_id\", jsonData.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "California",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "This pizza got its start back in the late 1970’s when Chef Ed LaDou began experimenting with pizza recipes in the classic Italian restaurant, Prego. He created a pizza with mustard, ricotta, pate, and red pepper, and by chance, served it to Wolfgang Puck",
+											"type": "text"
+										},
+										{
+											"key": "photo",
+											"type": "file",
+											"src": "/home/humberto/Documentos/california.jpeg"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/pizzas/pizza/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"pizzas",
+										"pizza",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Detroit",
+					"item": [
+						{
+							"name": "Detroit",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2b357d62-ee83-4221-8b2d-f9a133b52f41",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"var jsonData = pm.response.json();",
+											"pm.environment.set(\"pizza_id\", jsonData.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Detroit",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Reflecting the city’s deep ties to the auto industry, Detroit-style pizza was originally baked in a square automotive parts pan in the 1940’s. Detroit pizza is first topped with pepperoni, followed by brick cheese which is spread to the very edges of the pan, yielding a caramelized cheese perimeter",
+											"type": "text"
+										},
+										{
+											"key": "photo",
+											"type": "file",
+											"src": "/home/humberto/Documentos/detroit.jpg"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/pizzas/pizza/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"pizzas",
+										"pizza",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "St. Louis",
+					"item": [
+						{
+							"name": "St. Louis",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0800f065-0d16-427e-9798-1a82090576da",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"var jsonData = pm.response.json();",
+											"pm.environment.set(\"pizza_id\", jsonData.id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "St. Louis",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Looking for a light slice? St. Louis pizza features a thin crust with a cracker-like consistency that is made without yeast. Due to the crispy crust, St. Louis pizza is usually cut into three- or four-inch rectangles, known as party or tavern cut",
+											"type": "text"
+										},
+										{
+											"key": "photo",
+											"type": "file",
+											"src": "/home/humberto/Documentos/stluis.jpeg"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/pizzas/pizza/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"pizzas",
+										"pizza",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Pizza Prices and Sizes",
+					"item": [
+						{
+							"name": "Small",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"pizza\": {{pizza_id}},\n\t\"size\": 1,\n\t\"price\": 10.5\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/pizzas/price_pizza/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"pizzas",
+										"price_pizza",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Mediun",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"pizza\": {{pizza_id}},\n\t\"size\": 2,\n\t\"price\": 12.5\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/pizzas/price_pizza/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"pizzas",
+										"price_pizza",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Big",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"pizza\": {{pizza_id}},\n\t\"size\": 3,\n\t\"price\": 13.99\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/pizzas/price_pizza/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"pizzas",
+										"price_pizza",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Get Pizza",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/pizzas/pizza",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"pizzas",
+								"pizza"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Price Pizza",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/pizzas/price_pizza",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"pizzas",
+								"price_pizza"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Order",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/orders/order/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"orders",
+								"order",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"user\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/orders/order/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"orders",
+								"order",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get bill",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Command",
+			"item": [
+				{
+					"name": "Add command",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"order\": 5,\n\t\"pizza_ordered\": 2,\n\t\"toppings\": [\n\t\t{\n\t\t\t\"ingredient_topping\": 1\n\t\t}\n\t]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/commands/command/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"commands",
+								"command",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Command",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/commands/command/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"commands",
+								"command",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get ingredients_by_client",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "get users detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/detail/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"detail",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delivery address",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"user\": 1,\n\t\"street\": \"zapata\",\n\t\"departament\": \"11-B\",\n\t\"zip_code\": \"1426\",\n\t\"detail\": \"hola\"\n\t\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/delivery_address/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"delivery_address",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"first_name\": \"Dominos\",\n\t\"last_name\": \"Pizzas\",\n\t\"username\": \"dom\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/detail/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"detail",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Sizes",
+			"item": [
+				{
+					"name": "Sizes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sizes/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sizes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add size",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Small\",\n    \"description\": \"Personal / Perfect for take a way\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/sizes/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sizes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Medium",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Median\",\n    \"description\": \"To share / Perfect for a couple\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/sizes/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sizes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add size Copy Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Family\",\n    \"description\": \"For the family\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/sizes/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sizes",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Ingredients",
+			"item": [
+				{
+					"name": "Peperoni",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Pepperoni\",\n\t\"description\": \"Pepperoni\",\n\t\"is_topping\": true,\n\t\"cost\": 0.5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/ingredients/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"ingredients",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Ingredients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/ingredients",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"ingredients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mushrooms",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Mushrooms\",\n\t\"description\": \"Mushrooms\",\n\t\"is_topping\": true,\n\t\"cost\": 0.99\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/ingredients/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"ingredients",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Onions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Onions\",\n\t\"description\": \"Onions\",\n\t\"is_topping\": true,\n\t\"cost\": 0.1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/ingredients/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"ingredients",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bacon",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Bacon\",\n\t\"description\": \"Bacon\",\n\t\"is_topping\": true,\n\t\"cost\": 0.3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/ingredients/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"ingredients",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cheese",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"cheese\",\n\t\"description\": \"cheese\",\n\t\"is_topping\": true,\n\t\"cost\": 0.35\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/ingredients/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"ingredients",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Black olives",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Black olives\",\n\t\"description\": \"Black olives\",\n\t\"is_topping\": true,\n\t\"cost\": 0.2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/ingredients/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"ingredients",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Green peppers",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Green peppers\",\n\t\"description\": \"Green peppers\",\n\t\"is_topping\": true,\n\t\"cost\": 0.4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/ingredients/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"ingredients",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pineapple",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Pineapple\",\n\t\"description\": \"Pineapple\",\n\t\"is_topping\": true,\n\t\"cost\": 0.75\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/ingredients/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"ingredients",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Spinach",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Spinach\",\n\t\"description\": \"Spinach\",\n\t\"is_topping\": true,\n\t\"cost\": 0.05\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/ingredients/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"ingredients",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
