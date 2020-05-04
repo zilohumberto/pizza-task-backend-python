@@ -74,6 +74,8 @@ class OrderView(ModelViewSetNSerializer):
                 result_bill["items"].extend(toppings)
                 result_bill['total'] += round((command.amount*command.pizza_ordered.price)+total, 2)
 
+        result_bill['delivery'] = 10.0
+        result_bill['total'] = round(result_bill['total']+10)
         return JsonResponse(result_bill, status=200, safe=False)
 
     def partial_update(self, request, *args, **kwargs):
