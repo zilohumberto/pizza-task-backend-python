@@ -38,7 +38,7 @@ class OrderView(ModelViewSetNSerializer):
         else:
             data_query = {'user': user, 'status_id__gt': 1}
         
-        return model.objects.filter(**data_query)
+        return model.objects.filter(**data_query).order_by('-creation_date')
 
     @staticmethod
     @api_view(['POST'])
@@ -59,7 +59,7 @@ class OrderView(ModelViewSetNSerializer):
                         'units': 1,
                         'status': ""
                     })
-                    total += (topping.ingredient_topping.cost * command.amount)
+                    total += round(topping.ingredient_topping.cost * command.amount, 2)
 
                 result_bill["items"].append(
                     {
@@ -72,7 +72,7 @@ class OrderView(ModelViewSetNSerializer):
                     }
                 )
                 result_bill["items"].extend(toppings)
-                result_bill['total'] += (command.amount*command.pizza_ordered.price)+total
+                result_bill['total'] += round((command.amount*command.pizza_ordered.price)+total, 2)
 
         return JsonResponse(result_bill, status=200, safe=False)
 
