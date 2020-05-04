@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-[Implementation]](http://54.190.56.206:444/) 
+[Implementation](http://54.190.56.206:444/) 
 
 ### Runtime
 	Python 3.6.x
