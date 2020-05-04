@@ -12,7 +12,8 @@ class Command(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
     status = models.ForeignKey(CommandStatus, on_delete=models.CASCADE, null=True, blank=True)
-
+    amount = models.FloatField(default=1)
+    
     def save(self, *args, **kwargs):
         if not self.status_id:
             self.status_id = CommandStatus.objects.get(name='created').pk

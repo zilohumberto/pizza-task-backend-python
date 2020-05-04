@@ -12,7 +12,7 @@ class CommandStatusSerializer(serializers.ModelSerializer):
 
 
 class IngredientByClientSerializer(serializers.ModelSerializer):
-
+    ingredient_topping = IngredientSerializer()
     class Meta:
         model = IngredientByClient
         fields = ('id', 'ingredient_topping', 'amount', 'description')
@@ -31,7 +31,7 @@ class CommandSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Command
-        fields = ('id', 'pizza_ordered', 'order', 'creation_date', 'update_date', 'toppings', 'status',)
+        fields = ('id', 'pizza_ordered', 'order', 'creation_date', 'update_date', 'toppings', 'status', 'amount', )
 
     def create(self, validated_data):
         """
@@ -53,4 +53,4 @@ class CommandRestSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Command
-        fields = ('order', 'pizza_ordered', 'status', 'toppings', 'creation_date', 'update_date',)
+        fields = ('id', 'order', 'pizza_ordered', 'status', 'toppings', 'creation_date', 'update_date', 'amount', )

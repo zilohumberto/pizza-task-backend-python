@@ -59,21 +59,20 @@ class OrderView(ModelViewSetNSerializer):
                         'units': 1,
                         'status': ""
                     })
-                    total += topping.amount
+                    total += (topping.ingredient_topping.cost * command.amount)
 
                 result_bill["items"].append(
                     {
                         'is_pizza': True,
                         'name': command.pizza_ordered.pizza.name,
-                        'units': 1,
+                        'units': command.amount,
                         'total': command.pizza_ordered.price,
                         'size': command.pizza_ordered.size.name,
                         'status': command.status.description,
                     }
-
                 )
                 result_bill["items"].extend(toppings)
-                result_bill['total'] += command.pizza_ordered.price+total
+                result_bill['total'] += (command.amount*command.pizza_ordered.price)+total
 
         return JsonResponse(result_bill, status=200, safe=False)
 

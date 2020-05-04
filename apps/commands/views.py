@@ -23,7 +23,7 @@ class CommandView(ModelViewSetNSerializer):
     rest_serializer_class = CommandRestSerializer
     queryset = Command.objects.all()
     # permission_classes = (IsAuthenticated,)
-    http_method_names = ('get', 'patch', 'post', 'options', )
+    http_method_names = ('get', 'patch', 'post', 'options', 'delete', )
 
 
 class IngredientByClientView(ModelViewSetNSerializer):
