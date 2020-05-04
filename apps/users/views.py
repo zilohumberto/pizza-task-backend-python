@@ -13,14 +13,14 @@ class ContactView(ModelViewSet):
     serializer_class = ContactSerializer
     queryset = Contact.objects.all()
     # permission_classes = (IsAuthenticated,)
-    http_method_names = ('get', 'patch', 'post', 'delete', 'options', )
+    http_method_names = ('get', 'post', 'options', )
 
 
 class DeliveryAddressView(ModelViewSet):
     serializer_class = DeliveryAddressSerializer
     queryset = DeliveryAddress.objects.all()
     # permission_classes = (IsAuthenticated,)
-    http_method_names = ('get', 'patch', 'post', 'delete', 'options', )
+    http_method_names = ('get', 'post', 'options', )
 
 
 class UserView(ModelViewSetNSerializer):

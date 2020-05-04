@@ -14,7 +14,7 @@ from commands.serializers import (
 class CommandStatusView(ModelViewSet):
     serializer_class = CommandStatusSerializer
     queryset = CommandStatus.objects.all()
-    # permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
     http_method_names = ('get', 'patch', 'post', 'options', )
 
 

@@ -11,7 +11,7 @@ from commands.controllers import CommandController
 class OrderStatusView(ModelViewSet):
     serializer_class = OrderStatusSerializer
     queryset = OrderStatus.objects.all()
-    # permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
     http_method_names = ('get', 'patch', 'post', 'options',)
 
 
@@ -52,11 +52,12 @@ class OrderView(ModelViewSetNSerializer):
                 toppings = []
                 total = 0.0
                 for topping in command.toppings.all():
+                    import pdb; pdb.set_trace()
                     toppings.append({
                         'is_pizza': False,
                         'name': topping.ingredient_topping.name,
-                        'total': topping.amount,
-                        'units': 1,
+                        'total': topping.ingredient_topping.cost,
+                        'units': topping.amount,
                         'status': ""
                     })
                     total += round(topping.ingredient_topping.cost * command.amount, 2)
@@ -72,10 +73,10 @@ class OrderView(ModelViewSetNSerializer):
                     }
                 )
                 result_bill["items"].extend(toppings)
-                result_bill['total'] += round((command.amount*command.pizza_ordered.price)+total, 2)
+                result_bill['total'] += (command.amount*command.pizza_ordered.price)+total
 
         result_bill['delivery'] = 10.0
-        result_bill['total'] = round(result_bill['total']+10)
+        result_bill['total'] = round(result_bill['total']+10, 2)
         return JsonResponse(result_bill, status=200, safe=False)
 
     def partial_update(self, request, *args, **kwargs):
