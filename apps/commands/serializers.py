@@ -12,7 +12,7 @@ class CommandStatusSerializer(serializers.ModelSerializer):
 
 
 class IngredientByClientSerializer(serializers.ModelSerializer):
-    ingredient_topping = IngredientSerializer()
+    
     class Meta:
         model = IngredientByClient
         fields = ('id', 'ingredient_topping', 'amount', 'description')
@@ -49,7 +49,7 @@ class CommandSerializer(serializers.ModelSerializer):
 class CommandRestSerializer(serializers.ModelSerializer):
     pizza_ordered = PricePizzaRestSerializer()
     status = CommandStatusSerializer()
-    toppings = IngredientByClientSerializer(many=True)
+    toppings = IngredientByClientRestSerializer(many=True)
 
     class Meta:
         model = Command
