@@ -1,6 +1,6 @@
 asgiref==3.2.7
 boto3==1.13.0
-Django==3.0.7
+Django==3.1.9
 django-storages==1.9.1
 djangorestframework==3.11.0
 mysqlclient==1.4.6
